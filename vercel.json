@@ -1,3 +1,4 @@
 {
-  "rootDirectory": "eccommerce-app-fresh"
+  "version": 2,
+  "framework": "nextjs"
 }
