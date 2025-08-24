@@ -1,21 +1,21 @@
 const nextJest = require('next/jest');
+const path = require('path');
 
 const createJestConfig = nextJest({
-  dir: './', 
+  dir: './', // Your Next.js app directory
 });
 
 const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: [path.resolve(__dirname, 'jest.setup.js')],
   testEnvironment: 'jest-environment-jsdom',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+    '^.+\\.[jt]sx?$': ['babel-jest', { presets: ['next/babel'] }],
   },
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', 
-
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!your-es-module-to-transform)/',
+    '/node_modules/(?!your-esmodule-to-transform)/',
   ],
 };
 
