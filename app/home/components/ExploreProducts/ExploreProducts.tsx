@@ -1,6 +1,9 @@
-import React from 'react';
-import { FaHeart, FaEye } from 'react-icons/fa';
-import Button from '../../../../shared-components/Button/Button';
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { FaHeart, FaEye } from "react-icons/fa";
+import Button from "../../../../shared-components/Button/Button";
 
 const renderStars = (rating: number) => {
   const fullStars = Math.floor(rating);
@@ -9,95 +12,106 @@ const renderStars = (rating: number) => {
 
   for (let i = 0; i < 5; i++) {
     if (i < fullStars) {
-      stars.push(<span key={`full-${i}`} className="star filled select-none">★</span>);
+      stars.push(
+        <span key={`full-${i}`} className="star filled select-none">
+          ★
+        </span>
+      );
     } else if (i === fullStars && halfStar) {
-      stars.push(<span key={`half-${i}`} className="star half select-none">★</span>);
+      stars.push(
+        <span key={`half-${i}`} className="star half select-none">
+          ★
+        </span>
+      );
     } else {
-      stars.push(<span key={`empty-${i}`} className="star select-none">★</span>);
+      stars.push(
+        <span key={`empty-${i}`} className="star select-none">
+          ★
+        </span>
+      );
     }
   }
   return stars;
 };
 
-
 export const products = [
   {
     id: 1,
-    name: 'Breed Dry Dog Food',
+    name: "Breed Dry Dog Food",
     price: 100,
     rating: 4.5,
     stock: 95,
-    image: '/images/dog-food.png',
+    image: "/images/dog-food.png",
     hasAddToCart: false,
     isNew: false,
   },
   {
     id: 2,
-    name: 'CANON EOS DSLR Camera',
+    name: "CANON EOS DSLR Camera",
     price: 360,
     rating: 4.5,
     stock: 95,
-    image: '/images/camera.png',
+    image: "/images/camera.png",
     hasAddToCart: true,
     isNew: false,
   },
   {
     id: 3,
-    name: 'ASUS FHD Gaming Laptop',
+    name: "ASUS FHD Gaming Laptop",
     price: 1700,
     rating: 4.5,
     stock: 328,
-    image: '/images/laptop.png',
+    image: "/images/laptop.png",
     hasAddToCart: false,
     isNew: false,
   },
   {
     id: 4,
-    name: 'Curology Product Set',
+    name: "Curology Product Set",
     price: 500,
     rating: 4.5,
     stock: 145,
-    image: '/images/curology-set.png',
+    image: "/images/curology-set.png",
     hasAddToCart: false,
     isNew: false,
   },
   {
     id: 5,
-    name: 'Kids Electric Car',
+    name: "Kids Electric Car",
     price: 960,
     rating: 4.5,
     stock: 65,
-    image: '/images/electric-car.png',
+    image: "/images/electric-car.png",
     hasAddToCart: false,
     isNew: true,
   },
   {
     id: 6,
-    name: 'Jr. Zoom Soccer Cleats',
+    name: "Jr. Zoom Soccer Cleats",
     price: 110,
     rating: 4.5,
     stock: 35,
-    image: '/images/soccer-cleats.png',
+    image: "/images/soccer-cleats.png",
     hasAddToCart: false,
     isNew: false,
   },
   {
     id: 7,
-    name: 'GPI Shooter USB Gamepad',
+    name: "GPI Shooter USB Gamepad",
     price: 660,
     rating: 4.5,
     stock: 55,
-    image: '/images/gamepad.png',
+    image: "/images/gamepad.png",
     hasAddToCart: false,
     isNew: true,
   },
   {
     id: 8,
-    name: 'Quilted Satin Jacket',
+    name: "Quilted Satin Jacket",
     price: 660,
     rating: 4.5,
     stock: 55,
-    image: '/images/jacket.png',
+    image: "/images/jacket.png",
     hasAddToCart: false,
     isNew: false,
   },
@@ -118,11 +132,14 @@ const ExploreProducts: React.FC = () => {
             key={product.id}
             className="product-card border border-gray-200 rounded-lg overflow-hidden bg-white text-center p-2 relative min-w-0"
           >
-            <div className="product-image relative mb-4">
-              <img
+            <div className="product-image relative mb-4" style={{ height: 150, position: "relative" }}>
+              <Image
                 src={product.image}
                 alt={product.name}
-                className="w-full h-[150px] object-contain"
+                fill
+                className="object-contain"
+                priority={product.isNew}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
               {(product.id === 5 || product.id === 7) && (
                 <span className="new-label absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded-sm text-xs font-bold select-none">
@@ -130,20 +147,19 @@ const ExploreProducts: React.FC = () => {
                 </span>
               )}
               <div className="product-icons absolute top-2 right-2 flex flex-col gap-1">
-  <button
-    aria-label="Add to favorites"
-    className="icon-btn bg-white border border-gray-300 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer transition hover:bg-gray-100"
-  >
-    <FaHeart />
-  </button>
-  <button
-    aria-label="View details"
-    className="icon-btn bg-white border border-gray-300 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer transition hover:bg-gray-100"
-  >
-    <FaEye />
-  </button>
-</div>
-
+                <button
+                  aria-label="Add to favorites"
+                  className="icon-btn bg-white border border-gray-300 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer transition hover:bg-gray-100"
+                >
+                  <FaHeart />
+                </button>
+                <button
+                  aria-label="View details"
+                  className="icon-btn bg-white border border-gray-300 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer transition hover:bg-gray-100"
+                >
+                  <FaEye />
+                </button>
+              </div>
             </div>
             {product.hasAddToCart && product.id === 2 && (
               <div className="product-cart-button mb-4">
@@ -154,13 +170,13 @@ const ExploreProducts: React.FC = () => {
             )}
             <div className="product-info px-1">
               <div className="product-name mb-1 overflow-hidden whitespace-nowrap text-ellipsis">
-                <h3 className="text-base font-medium text-gray-700 leading-tight select-text">{product.name}</h3>
+                <h3 className="text-base font-medium text-gray-700 leading-tight select-text">
+                  {product.name}
+                </h3>
               </div>
               <div className="product-details flex items-center justify-center gap-3 text-sm text-gray-600">
                 <span className="price font-bold text-red-600 mt-1">${product.price}</span>
-                {product.id !== 2 && (
-                  <div className="rating flex space-x-[2px]">{renderStars(product.rating)}</div>
-                )}
+                {product.id !== 2 && <div className="rating flex space-x-[2px]">{renderStars(product.rating)}</div>}
                 <span className="stock text-gray-500">({product.stock})</span>
               </div>
               {product.id > 4 && (

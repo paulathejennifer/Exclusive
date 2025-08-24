@@ -17,19 +17,19 @@ const BrowseByCategory: React.FC = () => {
         <span>Categories</span>
       </div>
       <h2 className="text-3xl mb-6">Browse By Category</h2>
-      <div className="category-container flex items-center gap-3 overflow-x-auto scrollbar-hide">
+      <div className="category-container flex items-center gap-8 overflow-x-auto scrollbar-hide">
         <button
-          className="nav-btn flex-shrink-0 text-2xl p-2 cursor-pointer select-none"
+          className="nav-btn flex-shrink-0 text-3xl p-3 cursor-pointer select-none"
           aria-label="Previous"
         >
-          <span className="arrow text-xl">←</span>
+          <span className="arrow">←</span>
         </button>
         {categories.map((category) => {
           const Icon = category.icon;
           return (
             <button
               key={category.name}
-              className={`category-card flex flex-col items-center p-4 rounded-lg cursor-pointer flex-shrink-0 min-w-[100px] sm:min-w-[120px] transition ${
+              className={`category-card flex flex-col items-center py-4 px-6 rounded-lg cursor-pointer flex-shrink-0 min-w-[90px] sm:min-w-[110px] transition ${
                 category.active
                   ? 'bg-red-600 text-white shadow-lg'
                   : 'bg-gray-100 text-gray-800 hover:bg-red-100'
@@ -39,15 +39,17 @@ const BrowseByCategory: React.FC = () => {
               <span className="category-icon mb-2 text-4xl">
                 <Icon />
               </span>
-              <span className="category-name text-base font-medium">{category.name}</span>
+              <span className="category-name text-base font-medium whitespace-nowrap">
+                {category.name}
+              </span>
             </button>
           );
         })}
         <button
-          className="nav-btn flex-shrink-0 text-2xl p-2 cursor-pointer select-none"
+          className="nav-btn flex-shrink-0 text-3xl p-3 cursor-pointer select-none"
           aria-label="Next"
         >
-          <span className="arrow text-xl">→</span>
+          <span className="arrow">→</span>
         </button>
       </div>
     </section>

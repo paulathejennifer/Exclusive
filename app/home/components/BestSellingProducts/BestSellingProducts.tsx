@@ -1,11 +1,7 @@
 "use client";
 import React from "react";
-import {
-  FaHeart,
-  FaEye,
-  FaStar,
-  FaStarHalfAlt,
-} from "react-icons/fa";
+import Image from "next/image";
+import { FaHeart, FaEye, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const Button: React.FC<
   React.ButtonHTMLAttributes<HTMLButtonElement> & { className?: string }
@@ -74,9 +70,9 @@ const products = [
 const BestSellingProducts: React.FC = () => {
   return (
     <section className="pt-12 px-3 sm:px-6 font-sans max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-3 md:gap-0">
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-          <span className="font-bold text-red-600 pl-2 border-l-8 border-red-600 rounded-sm text-base leading-none">
+      <div className="flex flex-col items-start md:flex-row md:items-center justify-between mb-8 gap-3 md:gap-0">
+        <div className="flex flex-col">
+          <span className="font-bold text-red-600 pl-2 border-l-8 border-red-600 rounded-sm text-base leading-none mb-1">
             This Month
           </span>
           <h2 className="text-3xl font-semibold leading-none">Best Selling Products</h2>
@@ -93,12 +89,16 @@ const BestSellingProducts: React.FC = () => {
             key={product.id}
             className="bg-gray-100 rounded-lg border border-gray-200 p-5 text-center flex flex-col"
           >
-            <div className="relative mb-3 flex-grow">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-44 object-contain mx-auto"
-              />
+            <div className="relative mb-3 flex-grow" style={{ width: "180px", height: "180px", margin: "0 auto" }}>
+  <Image
+    src={product.image}
+    alt={product.name}
+    fill
+    className="object-contain"
+    priority={product.id === 1}
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+  />
+=
               <div className="absolute top-2 right-2 flex flex-col gap-2">
                 <button
                   className="bg-white rounded-full w-7 h-7 flex items-center justify-center shadow hover:bg-gray-100"
@@ -117,13 +117,9 @@ const BestSellingProducts: React.FC = () => {
             <div>
               <h3 className="text-base font-semibold truncate mb-2">{product.name}</h3>
               <div className="mb-2">
-                <span className="text-red-600 font-bold text-lg mr-1">
-                  ${product.discountPrice}
-                </span>
+                <span className="text-red-600 font-bold text-lg mr-1">${product.discountPrice}</span>
                 {product.originalPrice > product.discountPrice && (
-                  <span className="line-through text-gray-500 text-sm">
-                    ${product.originalPrice}
-                  </span>
+                  <span className="line-through text-gray-500 text-sm">${product.originalPrice}</span>
                 )}
               </div>
               <div className="flex items-center justify-center gap-1">

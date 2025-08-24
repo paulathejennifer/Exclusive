@@ -14,7 +14,7 @@ const ServicesSection: React.FC = () => {
           >
             <FaTruck className="text-white text-4xl" />
           </div>
-          <div className="text-center max-w-[190px] -translate-x-4 md:-translate-x-8">
+          <div className="text-center max-w-[190px] pl-4 md:pl-1">
             <h2 className="text-lg text-gray-800 font-semibold mb-1">FREE AND FAST DELIVERY</h2>
             <p className="text-sm text-gray-600 m-0">Free delivery for all orders over $140</p>
           </div>
@@ -29,7 +29,7 @@ const ServicesSection: React.FC = () => {
           >
             <FaHeadphones className="text-white text-4xl" />
           </div>
-          <div className="text-center max-w-[190px] -translate-x-3 md:-translate-x-7">
+          <div className="text-center max-w-[190px] pl-4 md:pl-1">
             <h2 className="text-lg text-gray-800 font-semibold mb-1">24/7 CUSTOMER SERVICE</h2>
             <p className="text-sm text-gray-600 m-0">Friendly 24/7 customer support</p>
           </div>
@@ -44,7 +44,7 @@ const ServicesSection: React.FC = () => {
           >
             <FaShieldAlt className="text-white text-4xl" />
           </div>
-          <div className="text-center max-w-[190px] -translate-x-4 md:-translate-x-8">
+          <div className="text-center max-w-[190px] pl-4 md:pl-1">
             <h2 className="text-lg text-gray-800 font-semibold mb-1">MONEY BACK GUARANTEE</h2>
             <p className="text-sm text-gray-600 m-0">We refund money within 30 days</p>
           </div>

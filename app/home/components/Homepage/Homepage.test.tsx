@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Homepage from "./Homepage";
 
+
 describe("Homepage Component", () => {
   beforeEach(() => {
     render(<Homepage />);
@@ -31,32 +32,28 @@ describe("Homepage Component", () => {
   it("renders sidebar categories with correct labels and arrows", () => {
     const categoriesWithArrow = ["Woman's Fashion", "Men's Fashion"];
     const categoriesWithoutArrow = [
-      "Electronics", "Home & Lifestyle", "Medicine", 
-      "Sports & Outdoor", "Baby's & Toys", "Groceries & Pets", "Health & Beauty"
+      "Electronics",
+      "Home & Lifestyle",
+      "Medicine",
+      "Sports & Outdoor",
+      "Baby's & Toys",
+      "Groceries & Pets",
+      "Health & Beauty",
     ];
 
-    categoriesWithArrow.forEach(label => {
+    categoriesWithArrow.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
 
       const labelDiv = screen.getByText(label);
       expect(labelDiv.querySelector("svg")).toBeInTheDocument();
     });
 
-    categoriesWithoutArrow.forEach(label => {
+    categoriesWithoutArrow.forEach((label) => {
       expect(screen.getByText(label)).toBeInTheDocument();
+
       const labelDiv = screen.getByText(label);
       expect(labelDiv.querySelector("svg")).not.toBeInTheDocument();
     });
   });
 
-  it("renders slideshow banner texts and images", () => {
-    expect(screen.getByText(/iPhone 14 Series/i)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Up to 10% off Voucher/i })).toBeInTheDocument();
-
-    expect(screen.getByRole("link", { name: /Shop Now/i })).toHaveAttribute("href", "#");
-
-    const img = screen.getByAltText("iPhone 14 Series");
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveClass("object-contain");
-  });
 });

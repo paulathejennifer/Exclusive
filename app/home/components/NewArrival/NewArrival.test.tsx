@@ -26,7 +26,7 @@ describe("NewArrival Component", () => {
 
   it("renders Shop Now links for all products", () => {
     const links = screen.getAllByText("Shop Now");
-    expect(links.length).toBe(4); // We have 4 product cards
+    expect(links.length).toBe(4); 
     links.forEach((link) => {
       expect(link).toHaveAttribute("href", "#");
       expect(link).toHaveClass("cursor-pointer");

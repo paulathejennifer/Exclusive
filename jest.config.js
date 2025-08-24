@@ -1,17 +1,22 @@
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { compilerOptions } = require('./tsconfig');
+const nextJest = require('next/jest');
 
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+const createJestConfig = nextJest({
+  dir: './', 
+});
+
+const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testEnvironment: 'jest-environment-jsdom',
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
   moduleNameMapper: {
-    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
-    '\\.(css|less|sass|scss)$': '<rootDir>/jest-mocks.js',
-    '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/jest-mocks.js',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy', 
+
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!your-es-module-to-transform)/',
+  ],
 };
+
+module.exports = createJestConfig(customJestConfig);
