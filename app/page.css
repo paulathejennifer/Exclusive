@@ -1,0 +1,47 @@
+.home-container {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.homepage,
+.promotional-banner,
+.flash-sales-section,
+.browse-category-section,
+.best-selling-section,
+.featured-categories-section,
+.explore-products-section,
+.new-arrival-section {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+  }
+
+  .products-container,
+  .categories-container,
+  .products-carousel {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .product-card,
+  .category-card {
+    min-width: 150px;
+  }
+
+  .promotional-banner {
+    height: 300px;
+  }
+
+  .banner-content {
+    max-width: 60%;
+  }
+
+  .banner-image {
+    width: 40%;
+  }
+}
